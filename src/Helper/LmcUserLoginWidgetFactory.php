@@ -12,9 +12,6 @@ use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Container\NotFoundExceptionInterface;
 
-use function assert;
-use function is_string;
-
 final class LmcUserLoginWidgetFactory
 {
     /**

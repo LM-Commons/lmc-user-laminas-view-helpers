@@ -18,9 +18,7 @@ final class Options extends AbstractOptions
     protected $__strictMode__ = false;
     //phpcs:enable
 
-    /**
-     * @var array<array-key,string>
-     */
+    /** @var array<array-key,string> */
     protected array $templateMap = [
         'login-widget' => 'lmcuser-view::login-widget',
     ];
