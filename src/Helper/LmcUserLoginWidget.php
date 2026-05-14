@@ -35,7 +35,7 @@ final class LmcUserLoginWidget implements HelperInterface
         ]);
         $viewModel->setTemplate($this->viewTemplate);
         if ($render) {
-            return $this->getView()->render($viewModel);
+            return $this->renderer->render($viewModel);
         } else {
             return $viewModel;
         }
