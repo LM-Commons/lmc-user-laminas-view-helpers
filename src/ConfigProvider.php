@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Lmc\User\Mezzio\View;
 
+use Laminas\ServiceManager\Factory\InvokableFactory;
+use Laminas\View\Renderer\PhpRenderer;
 use Lmc\User\Mezzio\View\Options\Options;
 use Lmc\User\Mezzio\View\Options\OptionsFactory;
 
@@ -23,6 +25,9 @@ final class ConfigProvider
         return [
             'factories' => [
                 Options::class => OptionsFactory::class,
+
+                // for v2 compatibility
+                PhpRenderer::class => InvokableFactory::class,
             ],
         ];
     }

@@ -33,7 +33,7 @@ final class LmcUserLoginWidgetFactory
         /** @var RendererInterface|null $renderer */
         $renderer = $container->has(PhpRenderer::class) ? $container->get(PhpRenderer::class) : null;
         if (null === $renderer) {
-            throw new InvalidConfigurationException('Missing PhpRenderer.');
+            throw new InvalidConfigurationException('Missing PhpRenderer service.');
         }
 
         if (null === $options->getTemplate('login-widget')) {
