@@ -30,10 +30,15 @@ final class ConfigProvider
     public function getViewHelperConfig(): array
     {
         return [
+            'aliases'   => [
+                'lmcUserDisplayName' => Helper\LmcUserDisplayName::class,
+                'lmcUserIdentity'    => Helper\LmcUserIdentity::class,
+                'lmcUserLoginWidget' => Helper\LmcUserLoginWidget::class,
+            ],
             'factories' => [
-                'lmcUserDisplayName' => Helper\LmcUserDisplayNameFactory::class,
-                'lmcUserIdentity'    => Helper\LmcUserIdentityFactory::class,
-                'lmcUserLoginWidget' => Helper\LmcUserLoginWidgetFactory::class,
+                Helper\LmcUserDisplayName::class => Helper\LmcUserDisplayNameFactory::class,
+                Helper\LmcUserIdentity::class    => Helper\LmcUserIdentityFactory::class,
+                Helper\LmcUserLoginWidget::class => Helper\LmcUserLoginWidgetFactory::class,
             ],
         ];
     }
