@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Lmc\User\Mezzio\View;
 
+use Laminas\ServiceManager\Factory\InvokableFactory;
+use Laminas\View\Renderer\PhpRenderer;
 use Lmc\User\Mezzio\View\Options\Options;
 use Lmc\User\Mezzio\View\Options\OptionsFactory;
 
@@ -23,6 +25,9 @@ final class ConfigProvider
         return [
             'factories' => [
                 Options::class => OptionsFactory::class,
+
+                // for v2 compatibility
+                PhpRenderer::class => InvokableFactory::class,
             ],
         ];
     }
@@ -30,10 +35,15 @@ final class ConfigProvider
     public function getViewHelperConfig(): array
     {
         return [
+            'aliases'   => [
+                'lmcUserDisplayName' => Helper\LmcUserDisplayName::class,
+                'lmcUserIdentity'    => Helper\LmcUserIdentity::class,
+                'lmcUserLoginWidget' => Helper\LmcUserLoginWidget::class,
+            ],
             'factories' => [
-                'lmcUserDisplayName' => Helper\LmcUserDisplayNameFactory::class,
-                'lmcUserIdentity'    => Helper\LmcUserIdentityFactory::class,
-                'lmcUserLoginWidget' => Helper\LmcUserLoginWidgetFactory::class,
+                Helper\LmcUserDisplayName::class => Helper\LmcUserDisplayNameFactory::class,
+                Helper\LmcUserIdentity::class    => Helper\LmcUserIdentityFactory::class,
+                Helper\LmcUserLoginWidget::class => Helper\LmcUserLoginWidgetFactory::class,
             ],
         ];
     }
